@@ -1,0 +1,20 @@
+global:
+
+route:
+  group_wait: 20m
+  group_by: ['alertname']
+  receiver: 'teams' # default receiver
+  group_interval: 3m
+  repeat_interval: 60m
+  
+  routes:
+  - receiver: 'teams'
+    match:
+      severity: "critical"
+    
+receivers:
+- name: 'teams'
+  webhook_configs:
+  - url: "http://10.50.1.53:2000/alertmanager"
+    send_resolved: true
+

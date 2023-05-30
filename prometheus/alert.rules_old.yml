@@ -1,0 +1,12 @@
+groups:
+- name: fila acumulando
+  rules:
+  - alert: FilaAcumulando
+    expr: rate(rabbitmq_queue_messages_ready[500m]) > rate(rabbitmq_queue_messages_unacknowledged[500m])
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: 'Fila acumulando'
+      description: 'Mensagens paradas na fila'
+      text: 'Há mensagens paradas na fila. A taxa de mensagens prontas é maior do que a taxa de mensagens não confirmadas.'
