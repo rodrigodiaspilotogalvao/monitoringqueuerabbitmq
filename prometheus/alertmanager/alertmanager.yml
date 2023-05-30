@@ -15,6 +15,6 @@ route:
 receivers:
 - name: 'teams'
   webhook_configs:
-  - url: "http://10.50.1.53:2000/alertmanager"
+  - url: "http://ip.ip.ip.ip:2000/alertmanager"
     send_resolved: true
 
